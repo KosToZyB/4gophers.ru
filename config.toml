@@ -1,0 +1,7 @@
+baseurl = "http://localhost:1313/"
+title = "4gophers"
+languageCode = "ru-ru"
+theme="4g"
+
+[params]
+	disableRSS = false

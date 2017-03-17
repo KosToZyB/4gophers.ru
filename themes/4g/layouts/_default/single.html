@@ -1,0 +1,12 @@
+{{ partial "header.html" . }}
+
+<div class="row">
+	<div class="large-12 columns">
+		<h2 class="title">{{ .Title }}</h2>
+		{{ .Content }}
+		
+		<div class="data">{{ .Date.Format "Jan 2, 2006" }}</div>
+	</div>
+</div>
+
+{{ partial "footer.html" . }}

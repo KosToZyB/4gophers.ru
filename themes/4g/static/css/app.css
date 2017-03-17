@@ -1,0 +1,26 @@
+#logo {
+	margin: 1rem;
+}
+
+.main-menu{
+	width: 18rem;
+}
+
+.item {
+	margin-top: 3rem;
+}
+
+h2.title {
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+div.footer {
+	padding: 1rem 0 2rem 0;
+}
+
+div.pagination {
+	text-align: center;
+	margin-top: 5rem;
+}

@@ -1,0 +1,18 @@
+<div class="pagination">
+{{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+	<ul class="pagination" role="navigation" aria-label="Pagination">
+		{{ if and (.Paginator.HasPrev) (.Paginator.HasNext) }}
+		<li class="pagination-previous"><a href="{{ .Paginator.Prev.URL }}" aria-label="Previous page">Previous <span class="show-for-sr">page</span></a></li>
+		<li class="pagination-next"><a href="{{ .Paginator.Next.URL }}" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+		{{ end }}
+		{{ if and (.Paginator.HasPrev) (not .Paginator.HasNext) }}
+		<li class="pagination-previous"><a href="{{ .Paginator.Prev.URL }}" aria-label="Previous page">Previous <span class="show-for-sr">page</span></a></li>
+		<li class="pagination-next disabled">Next <span class="show-for-sr">page</span></li>
+		{{ end }}
+		{{ if and (not .Paginator.HasPrev) (.Paginator.HasNext) }}
+		<li class="pagination-previous disabled">Previous <span class="show-for-sr">page</span></li>
+		<li class="pagination-next"><a href="{{ .Paginator.Next.URL }}" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+		{{ end }}
+	</ul>
+{{ end }}
+</div>

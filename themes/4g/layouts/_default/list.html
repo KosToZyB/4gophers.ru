@@ -1,0 +1,18 @@
+{{ partial "header.html" . }}
+
+<div class="row">
+    <div class="large-12 columns">
+
+    	{{ range (.Paginator 10).Pages }}
+    		<div class="item">
+	    		<h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+		        {{ .Summary }}
+	        </div>
+	    {{ end }}
+
+
+	    {{ partial "paginations.html" . }}
+	</div>
+</div>
+
+{{ partial "footer.html" . }}

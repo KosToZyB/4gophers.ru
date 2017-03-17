@@ -1,0 +1,33 @@
+{{ partial "header.html" . }}
+
+<div class="row">
+    <div class="large-8 columns">
+
+    	{{ range (first 6  (where .Data.Pages "Type" "articles"))  }}
+    		<div class="item">
+	    		<h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+		        {{ .Summary }}
+	        </div>
+	    {{ end }}
+
+		<div class="item">
+			<a href="/articles">Все статьи</a>
+		</div>
+	</div>
+
+	<div class="large-4 columns">
+		{{ range (first 10  (where .Data.Pages "Type" "news"))  }}
+    		<div class="item">
+    			{{ .Date.Format "Jan 2, 2006" }}
+	    		
+	    		{{ .Content }}
+	        </div>
+	    {{ end }}
+
+		<div class="item">
+			<a href="/news">Все новости</a>
+		</div>	
+	</div>
+</div>
+
+{{ partial "footer.html" . }}
