@@ -1,6 +1,6 @@
 +++
 date = "2016-11-30T14:10:02+03:00"
-draft = false
+draft = true
 title = "Вакансия Junior Go разработчик"
 
 +++
