@@ -7,7 +7,9 @@
 		<title>{{ .Title }} | 4gophers.ru</title>
 		<link rel="stylesheet" href="/css/foundation.css">
 	    <link rel="stylesheet" href="/css/app.css">
-	    <link rel="stylesheet" href="/highlight/monokai.css">
+	    <link rel="stylesheet" href="/highlight/styles/monokai.css">
+
+	    <link rel="icon" type="image/png" href="/icon.png" />
 
 	    <script type="text/javascript" src="/highlight/highlight.pack.js"></script>
 	    <script>
@@ -35,15 +37,21 @@
 
 
 	<div class="row">
-	  	<div class="large-12 columns">
+		
+	  	<div class="large-9 columns">
 	    	<h1 class="text-center" id="logo"><a href="/">4gophers</a></h1>
+
+	    	<ul class="menu">
+				<li><a href="/articles">Статьи</a></li>
+				<li><a href="/news">Новости</a></li>
+				<li><a href="/videos">Видео</a></li>
+			</ul>
+
+		</div>
+
+		<div class="large-3 columns">
+			<a href="/"><img class="logo-img" src="/main-gopher-stars-small.png" /></a>
 		</div>
 	</div>
 
-	<div class="row column main-menu text-center">
-		<ul class="menu">
-			<li><a href="/articles">Статьи</a></li>
-			<li><a href="/news">Новости</a></li>
-			<li><a href="/videos">Видео</a></li>
-		</ul>
-	</div>
+	

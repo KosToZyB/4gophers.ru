@@ -1,5 +1,6 @@
 #logo {
 	margin: 1rem;
+	text-align: left;
 }
 
 .main-menu{
@@ -10,9 +11,10 @@
 	margin-top: 3rem;
 }
 
+
 h2.title {
 	margin-top: 3rem;
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 	text-align: center;
 }
 
@@ -25,7 +27,24 @@ div.pagination {
 	margin-top: 5rem;
 }
 
+div.date {
+	padding-top: 1rem;
+}
+
 .share-row {
 	margin-bottom: 3rem;
 	margin-top: 3rem;
+}
+
+.logo-img {
+	width: 15rem;
+}
+
+pre {
+	margin-bottom: 1rem;
+}
+
+div.article img {
+	display: block;
+    margin: 0 auto;
 }
