@@ -1,9 +1,6 @@
 {{ partial "header.html" . }}
 
 <div class="row">
-    <div class="large-1 columns">
-        &nbsp;  
-    </div>
     <div class="large-10 columns">
 
     	{{ range (.Paginator 10).Pages }}
@@ -15,8 +12,8 @@
 
 	    {{ partial "paginations.html" . }}
 	</div>
-	<div class="large-1 columns">
-        &nbsp;  
+	<div class="large-2 columns">
+        {{ partial "ad.html" }}
     </div>
 </div>
 

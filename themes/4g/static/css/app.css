@@ -48,3 +48,12 @@ div.article img {
 	display: block;
     margin: 0 auto;
 }
+
+div.ad {
+	text-align: center;
+	margin-top: 8rem;
+}
+
+div.ad img.banner {
+	width: 10rem;
+}

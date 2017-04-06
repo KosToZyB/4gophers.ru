@@ -1,4 +1,4 @@
-baseurl = "http://localhost:1313/"
+baseurl = "http://4gophers.ru"
 title = "4gophers"
 languageCode = "ru-ru"
 theme="4g"

@@ -2,17 +2,18 @@
 
 
 <div class="row">
-    <div class="large-1 columns">
-        &nbsp;  
-    </div>
-    <div class="large-10 columns">
+    <div class="large-12 columns">
         <div class="row">
-        	<div class="large-12 columns article">
+        	<div class="large-10 columns article">
         		<h2 class="title">{{ .Title }}</h2>
         		{{ .Content }}
         		
         		<div class="data">{{ .Date.Format "Jan 2, 2006" }}</div>
         	</div>
+
+            <div class="large-2 columns">
+                {{ partial "ad.html" }}
+            </div>
         </div>
 
         <div class="row share-row">
@@ -52,9 +53,6 @@
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-    </div>
-    <div class="large-1 columns">
-        &nbsp;  
     </div>
 </div>
 {{ partial "footer.html" . }}
