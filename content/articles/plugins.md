@@ -1,11 +1,13 @@
 +++
-date = "2017-04-05T19:59:09+03:00"
-draft = true
+date = "2017-04-08T18:05:09+03:00"
+draft = false
 title = "Пишем модульную Go программу с плагинами"
 
 +++
 
 Перевод статьи "[Writing Modular Go Programs with Plugins](https://medium.com/learning-the-go-programming-language/writing-modular-go-programs-with-plugins-ec46381ee1a9)"
+
+<img src="/img/plugins.jpeg"/>
 
 Среди всех фич, которые появились в Go 1.8 есть система плагинов. С ее помощью можно создавать модульные программы используя пакеты как динамически загружаемые в рантайме библиотеки.
 
@@ -153,54 +155,54 @@ Hello Universe
 
 Создание модульных приложений на основе Go плагинов требует не менее строгого подход к разработке, чем при проектировании обычных приложений. Тем не менее, благодаря своей разделяющей сущности, плагины позволяют использовать некоторые новые концепции.
 
-#### Clear affordances
+#### ПОнятная интеграция
 
-When building pluggable software system, it is important to establish clear component affordances. The system must provide clean a simple surfaces for plugin integration. Plugin developers, on the other hand, should consider the system as black box and make no assumptions other than the provided contracts.
+Когда вы проектируете расширяемое приложение, очень важно чтобы вы заранее продумали как плагины будут интегрироваться в вашу систему. Вы должны предоставить простые и удобные интерфейсы для встраивания плагинов. С другой стороны, разработчики плагинов должны относится к вашей системе как к черному ящику и руководствоваться только только предоставленной вами спецификацией.
 
-#### Plugin Independence
+#### Независимость плагинов
 
-A plugin should be considered an independent component that is decoupled from other components. This allows plugins to follow their own development and deployment life cycles independent of their consumers.
+Плагин должен быть отдельным и самодостаточным компонентом, никак не имеющим лишних связей с другими компонентами системы. Это позволяет разрабатывать плгины как отдельные приложения со своим собственным циклом разработки.
 
-#### Apply Unix modularity principles
+#### Идеология Unix
 
-A plugin code should be designed to focus on one and only one functional concern.
+Плагин должен хорошо выполнять одну и только одну задачу.
 
-#### Clearly documented
+#### Понятная документация
 
-Since plugins are independent components that are loaded at runtime, it is imperative they are well-documented. For instance, the names of exported functions and variables should be clearly documented to avoid symbol lookup errors.
+Если плагины работают как независимы компоненты, загруженные в рантайме, то очень важно, чтобы они были максимально задокументированы. Например, имена экспортируемых функций и переменных должны быть описаны в документации, это поможет избежать ошибок при их использовании в приложении, это поможет избежать большего количества ошибок.
 
-#### Use interface types as boundaries
+#### Испольуйте интерфейсные типы как границы
 
-Go plugins can export both package functions and variables of any type. You can design your plugin to bundle its functionalities as a set of loose functions. The downside is you have to lookup and bind each function symbol separately.
+Go могут экспортировать как функции так и переменные из пакета, независимо от их типа. Вы можете разрабатывать свой плагин, реализующий определенную логику, как набор функций. Но в таком случае вам прийдется загружать и биндить отдельно каждую функцию.
 
-A tidier approach, however, is to use interface types. Creating an interface to export functionalities provides a uniform and concise interaction surface with clear functional demarcations. Looking up and binding to a symbol that resolves to an interface will provide access to the entire method set for the functionality, not just one.
+Есть более оптимальный подход - использование интерфейсных типов. Вы можете создать некоторый интерфейс, который будет четко определять функциональность и взаимодействие с ним будет более лаконичным. Загрузка экспортируемого символа, который определен как интерфейс, предоставляет доступ ко всем его методам, а не только к одной функции.
 
-#### New deployment paradigm
+#### Новая парадигма деплоя
 
-Plugins have the potential of impacting how software is built and distributed in Go. For instance, library authors could distribute their code as pre-built components that can be linked at runtime. This would represent a departure from the the traditional `go get`, build, and link cycle.
+Использование плагинов может повлиять на то, как собираются и деплоятся приложения на Go. Например, автор библиотеки может распространять свой код как скомпилированные компоненты, которые могут быть использованы в рантайме. А это уже довольно сильное отклонение от стандартного цикла `go get`, сборки и линковки.
 
-#### Trust and security
+#### Доверие и безопасность
 
-If the Go community gets in the habit of using pre-built plugin binaries as a way of distributing libraries, trust and security will naturally become a concern. Fortunately, there are already established communities coupled with reputable distribution infrastructures that can help here.
+Если Go сообщество примет идею распространения скомпилированных плагинов и бинарников, то безопасность и доверие станет проблемой. К счастью, сообщество уже довольно зрелое и вполне может помочь с решением проблемы распространения таких библиотек.
 
-#### Versioning
+#### Версионирование
 
-Go plugins are opaque and independent entities that should be versioned to give its users hints of its supported functionalities. One suggestion here is to use semantic versioning when naming the shared object file. For instance, the file compiled plugin above could be named `eng.so.1.0.0` where suffix `1.0.0` repents its semver.
+Go плагины независимые и самостоятельные сущности, которые должны версионироваться так, чтобы было понятно, какая функциональность включена в какую версию. Я рекомендую использовать семантическое версионирование и добавлять номер версии к названию самого .so файла. Например, файл может называться `eng.so.1.0.0`, где `1.0.0` и есть номер версии.
 
-### Gosh: a pluggable command shell
+### Gosh: модульная командная оболочка
 
-I will go ahead and plug (no pun, really) this project I started recently. Since the plugin system was announced, I wanted to create a pluggable framework for creating interactive command shell programs where commands are implemented using Go plugins. So I created [Gosh](https://github.com/vladimirvivien/gosh) (Go shell).
+Я хочу представить проект, который я недавно начал. Как только стало известно о появлении плагинов в Go, я захотел написать расширяемый фреймворк для создания интерактивной командной оболочки, в которой все команды будут реализованы с помощью плагинов. В итоге у меня получился [Gosh](https://github.com/vladimirvivien/gosh) (Go shell).
 
->Learn about Gosh in this [blog post](https://medium.com/@vladimirvivien/gosh-a-go-pluggable-console-shell-cf25102c8439)
+>Узнать больше о Gosh можно вот в [этой статье](https://medium.com/@vladimirvivien/gosh-a-go-pluggable-console-shell-cf25102c8439)
 
-Gosh uses a driver shell program to load the command plugins at runtime. When a user types a command at the prompt, the driver dispatches the plugin registered to handle the command. This is an early attempt, but it shows the potential power of the Go plugin systems.
+Gosh использует драйвер оболочки для загрузки плагинов различных команд прям в рантайме. Когда пользовать набирает команду в консоли, драйвер выбирает необходимый плагин, необходимый для обработки этой команды. Конечно, это только первые шаги, но уже виден потенциал и мощь системы плагинов в Go.
 
-### Conclusion
+### Заключение
 
-I am excited about the addition of shared object plugin in Go. I think it adds an important dimension to the way Go programs can be assembled and built. Plugins will make it possible to create new types of Go systems that take advantage of the late binding nature of dynamic shared object binaries such as Gosh, or distributed systems where plugin binaries are pushed to nodes as needed, or containerized system that finalize assembly at runtime, etc.
+Меня очень радует идея добавления плагинов в Go. Я считаю, что это одно из самых важных изменений, которое очень сильно повлияет на сбоку и дистрибуцию Go приложений. Плагины позволяют создавать Go программы нового типа, с более динамической связанностью, реализованной через загрузку разделяемых библиотек. И одним из первых примеров такого приложения является Gosh. Теперь мы можем делать более распределенные системы, загружая бинарки плагинов на ноды  или используя их в контейнерах при необходимости.
 
-Plugins are not perfect. They have their flaws (their rather large sizes for now) and can be abused just like anything in software development. If other languages are an indication, I can predict plugin versioning hell will be a pain point. Those issues aside, having a modular solutions in Go makes for a healthier platform that can strongly support both single-binary and modularized deployment models.
+Конечно, плагины не решают всех проблем, а порой добавляют новых. Плагины  Например, использование плагинов может увеличить размер вашего приложения. А если посмотреть на использование пакетов в других языках, то вероятно нас ожидает еще один "ад плагинов" связанные с их версионированием и распространением. Конечно, для решения всех этих вопросов необходима Go платформа, поддерживающая как модульную стрктуру приложения так и монолитные программы
 
-As always, if you find this writeup useful, please let me know by clicking on the ♡ icon to recommend this post.
+Как всегда, если вам понравилась эта статья, жду комментариев и репостов.
 
-Also, don’t forget to checkout my book on Go, titled Learning Go Programming from Packt Publishing.
+И не забудьте купить мою книгу о Go: "[Learning Go Programming from Packt Publishing](https://medium.com/learning-the-go-programming-language/writing-modular-go-programs-with-plugins-ec46381ee1a9)".
