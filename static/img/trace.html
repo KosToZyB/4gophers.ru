@@ -1,0 +1,107 @@
+
+<!-- saved from url=(0064)https://making.pusher.com/js/2017-03-22-go-tool-trace/trace.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>template {display: none !important;} /* injected by platform.js */</style><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; } 
+</style>
+<link href="https://making.pusher.com/js/2017-03-22-go-tool-trace/trace_viewer.html" rel="import">
+<script>
+(function() {
+  var viewer;
+  var url;
+  var model;
+
+  function load() {
+    var req = new XMLHttpRequest();
+    var is_binary = /[.]gz$/.test(url) || /[.]zip$/.test(url);
+    req.overrideMimeType('text/plain; charset=x-user-defined');
+    req.open('GET', url, true);
+    if (is_binary)
+      req.responseType = 'arraybuffer';
+
+    req.onreadystatechange = function(event) {
+      if (req.readyState !== 4)
+        return;
+
+      window.setTimeout(function() {
+        if (req.status === 200)
+          onResult(is_binary ? req.response : req.responseText);
+        else
+          onResultFail(req.status);
+      }, 0);
+    };
+    req.send(null);
+  }
+
+  function onResultFail(err) {
+    var overlay = new tr.ui.b.Overlay();
+    overlay.textContent = err + ': ' + url + ' could not be loaded';
+    overlay.title = 'Failed to fetch data';
+    overlay.visible = true;
+  }
+
+  function onResult(result) {
+    model = new tr.Model();
+    var i = new tr.importer.Import(model);
+    var p = i.importTracesWithProgressDialog([result]);
+    p.then(onModelLoaded, onImportFail);
+  }
+
+  function onModelLoaded() {
+    viewer.model = model;
+    viewer.viewTitle = "trace";
+  }
+
+  function onImportFail() {
+    var overlay = new tr.ui.b.Overlay();
+    overlay.textContent = tr.b.normalizeException(err).message;
+    overlay.title = 'Import error';
+    overlay.visible = true;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var container = document.createElement('track-view-container');
+    container.id = 'track_view_container';
+
+    viewer = document.createElement('tr-ui-timeline-view');
+    viewer.track_view_container = container;
+    viewer.appendChild(container);
+
+    viewer.id = 'trace-viewer';
+    viewer.globalMode = true;
+    document.body.appendChild(viewer);
+
+    url = '/js/2017-03-22-go-tool-trace/trace.json';
+    load();
+  });
+}());
+</script><style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none;}
+html /deep/ [touch-action="none"]{ -ms-touch-action: none; touch-action: none;}
+[touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto;}
+html /deep/ [touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto;}
+[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x;}
+html /deep/ [touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x;}
+[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y;}
+html /deep/ [touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y;}
+[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y;}
+html /deep/ [touch-action="pan-x pan-y"],html /deep/ [touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y;}
+[touch-action="manipulation"]{ -ms-touch-action: manipulation; touch-action: manipulation;}
+html /deep/ [touch-action="manipulation"]{ -ms-touch-action: manipulation; touch-action: manipulation;}
+</style>
+<style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style><link rel="stylesheet" type="text/css" href="chrome-extension://neomigpibafpboiknmijddgnncengfnm/css/divpop.css"><style type="text/css">/* This is not a zero-length file! */</style><style type="text/css">/* This is not a zero-length file! */</style></head>
+<body>
+
+
+<tr-ui-timeline-view tabindex="0" id="trace-viewer"><track-view-container id="track_view_container"><tr-ui-timeline-track-view><div class="track drawing-container"><canvas class="drawing-container-canvas" width="1286" height="12" style="left: 250px; width: 1286px; height: 12px;"></canvas><div class="track ruler-track"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div><div class="track model-track"></div></div><div class="track drawing-container" style="display: block;"><canvas class="drawing-container-canvas" width="1286" height="240" style="left: 250px; width: 1286px; height: 240px;"></canvas><div class="track model-track"><div class="track process-track-base expanded"><div class="process-track-header" title="STATS (pid 1)"><span class="process-track-name">STATS (pid 1)</span></div><div class="track chart-track counter-track"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div><div class="track spacing-track"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div><div class="track chart-track counter-track"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div><div class="track spacing-track"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div><div class="track chart-track counter-track"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div><div class="track spacing-track"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div></div><div class="track process-track-base expanded"><div class="process-track-header" title="PROCS (pid 0)"><span class="process-track-name">PROCS (pid 0)</span></div><div class="track thread-track"><div class="track slice-group-track"><div class="track rect-track" style="height: 18px;"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div></div></div><div class="track spacing-track"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div><div class="track thread-track"><div class="track slice-group-track"><div class="track rect-track" style="height: 18px;"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div><div class="track rect-track" style="height: 18px;"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div></div></div><div class="track spacing-track"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div><div class="track thread-track"><div class="track slice-group-track"><div class="track rect-track" style="height: 18px;"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div></div></div><div class="track spacing-track"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div><div class="track thread-track"><div class="track slice-group-track"><div class="track rect-track" style="height: 18px;"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div></div></div><div class="track spacing-track"><tr-ui-heading style="width: 244px;"></tr-ui-heading></div></div></div></div><tr-ui-b-mouse-mode-selector></tr-ui-b-mouse-mode-selector><iframe style="position: absolute; width: 100%; height: 0px; border: 0px; visibility: hidden;" src="./trace_files/saved_resource.html"></iframe></tr-ui-timeline-track-view></track-view-container></tr-ui-timeline-view></body></html>
