@@ -1,6 +1,6 @@
 +++
-date = "2016-12-08T19:09:07+03:00"
-draft = false
+date = "2017-06-19T20:50:08+03:00"
+draft = true
 title = "GolangShow. Выпуск 086. 1.6.4, 1.7.4, 1.8beta1"
 
 +++

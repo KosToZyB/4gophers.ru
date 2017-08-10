@@ -1,6 +1,6 @@
 +++
-date = "2016-12-19T13:29:01+03:00"
-draft = false
+date = "2017-06-19T20:50:08+03:00"
+draft = true
 title = "GolangShow. Выпуск 088. Beta 2, Gogland, Go User Survey"
 
 +++

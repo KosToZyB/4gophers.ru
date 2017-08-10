@@ -16,6 +16,11 @@
 	</div>
 
 	<div class="large-4 columns">
+		<div class="item" style="text-align:center">
+			<h4><a href="/work">Работа</a></h4>
+			<a href="/work"><img src="/img/apptica/apptica_logo.png"></a>
+		</div>
+
 		{{ range (first 10  (where .Data.Pages "Type" "news"))  }}
     		<div class="item">
     			{{ .Date.Format "Jan 2, 2006" }}

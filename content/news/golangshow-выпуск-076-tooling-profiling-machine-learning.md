@@ -1,6 +1,6 @@
 +++
-date = "2016-10-01T17:27:05+03:00"
-draft = false
+date = "2017-06-19T20:50:08+03:00"
+draft = true
 title = "GolangShow. Выпуск 076. Tooling, profiling, machine learning."
 
 +++

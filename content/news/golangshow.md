@@ -1,9 +1,8 @@
 +++
-date = "2015-09-04T16:45:04+03:00"
-draft = false
-title = "golangshow"
+date = "2017-06-19T20:50:08+03:00"
+draft = true
+title = "GolangShow. "
 
 +++
 
-<p>Классный <a href="http://golangshow.com/episode/2015/09-03-016/">выпуск подкаста&nbsp;golangshow с&nbsp;Дмитрием Вьюковым</a>.</p>
-
+<p><a href="http://golangshow.com/subscribe/">GolangShow. </a></p>

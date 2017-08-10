@@ -1,6 +1,6 @@
 +++
-date = "2016-11-16T19:14:07+03:00"
-draft = false
+date = "2017-06-19T20:50:08+03:00"
+draft = true
 title = "GolangShow. Выпуск 082. В гостях Андрей Минкин. 7 лет Go, 10 HighLoad'у"
 
 +++

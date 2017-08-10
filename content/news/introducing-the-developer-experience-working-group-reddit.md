@@ -1,6 +1,6 @@
 +++
-date = "2017-04-11T14:06:02+03:00"
-draft = true
+date = "2017-07-13T20:05:08+03:00"
+draft = false
 title = "Introducing the Developer Experience Working Group  #reddit"
 
 +++
