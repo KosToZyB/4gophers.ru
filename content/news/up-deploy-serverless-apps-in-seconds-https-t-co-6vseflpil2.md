@@ -1,7 +1,7 @@
 +++
 date = "2017-08-11T18:36:49+03:00"
 draft = false
-title = "Up — Deploy serverless apps in seconds https://t.co/6VsEFLpil2 "
+title = "Up — Deploy serverless apps in seconds https://t.co/6VsEFLpil2"
 
 +++
 
