@@ -1,6 +1,6 @@
 +++
 date = "2015-06-26T18:37:06+03:00"
-draft = false
+draft = true
 title = "Event Sourcing с помощью Kafka and Go"
 
 +++
@@ -39,10 +39,10 @@ select * from order o, customer c
 
 В отличие от таблиц в SQL базах, топик должен иметь больше чем одну партицию. Kafka гарантирует константное время работы O(1), каждая партиция может содержать тысячи, миллионы и даже больше записей, при этом сохранять нормальную работу. Каждая партиция содержит разные логи.
 
-Partitioning is the the process through which Kafka allows us to do parallel processing. Thanks to partitioning, each consumer in a consumer group can be assigned to a process in an entirely different partition. In other words, this is how Kafka handles load balancing.
+Партиционирование в Kafka позволяет нам выполнять параллельную обработку. Благодаря партиционированию каждый консумер из группы консумеров может быть выбран для обработки полностью отличающейся партиции. Таким образом Kafka выполняет балансировку нагрузки.  
 
-Each message is produced somewhere outside of Kafka. The system responsible for sending a commit log to a Kafka broker is called a producer. The commit log is then received by a unique Kafka broker, acting as the leader of the partition to which the message is sent. Upon writing the data, each leader then replicates the same message to a different Kafka broker, either synchronously or asynchronously, as desired by the producer. This Producer-Broker orchestration is handled by an instance of Apache ZooKeeper, outside of Kafka.
+Каждое сообщение попадает в Kafka через продюсер. Продюсером называется система, которая отправляет в брокер коммит лог. Сообщение получает брокер, который является лидером партиции. В момент записи данных, лидер каждой партиции реплицирует данные на другие брокеры - синхронно или асинхронно, в зависимости от настроек продюсера. Все это взаимодействие между брокером и продюсером разруливается с помощью инстанса Apache ZooKeeper и независимо от самой Kafka.
 
-Kafka is usually compared to a queuing system such as RabbitMQ. What makes the difference is that after consuming the log, Kafka doesn't delete it. In that way, messages stay in Kafka longer, and they can be replayed.
+Kafka чаще всего сравнивается с другой популярной системой очередей - RabbitMQ. Одно из самых больших отличий Kafka и RabbitMQ в том, что Kafka не удаляет коммит лог после его доставки. 
 
-## Setting Up Kafka
+## Настраиваем Kafka
