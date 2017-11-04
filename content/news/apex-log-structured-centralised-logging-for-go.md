@@ -1,8 +1,0 @@
-+++
-date = "2017-01-15T00:45:12+03:00"
-draft = true
-title = "Apex log - structured & centralised logging for Go "
-
-+++
-
-<p><a href="https://medium.com/@tjholowaychuk/apex-log-e8d9627f4a9a">Apex log - structured & centralised logging for Go </a></p>
