@@ -14,6 +14,13 @@
 	    {{ partial "paginations.html" . }}
 	</div>
 	<div class="large-2 columns">
+		<div class="tags">
+			<ul id="all-tags">
+				{{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+					<li><a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a></li>
+				{{ end }}
+			</ul>
+		</div>
         {{ partial "ad.html" }}
     </div>
 </div>

@@ -1,11 +1,10 @@
 +++
-date = "2016-11-10T01:48:01+03:00"
+date = "2017-11-10T01:48:01+03:00"
 draft = true
 title = "TCP сервер работающий как часы"
+tags = ["golang"]
 
 +++
-
-## TCP сервер работающий как часы
 
 Перевод статьи "[TCP servers that run like clockwork](https://sahilm.com/tcp-servers-that-run-like-clockwork/)"
 

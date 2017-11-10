@@ -2,6 +2,7 @@
 date = "2017-07-04T17:59:09+03:00"
 draft = false
 title = "Сетевые протоколы: Ethernet и Go"
+tags = ["golang", "net"]
 
 +++
 

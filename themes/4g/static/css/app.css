@@ -57,3 +57,11 @@ div.ad {
 div.ad img.banner {
 	width: 10rem;
 }
+
+div.tags {
+	margin-top: 8rem;
+}
+
+div.tags ul li{
+	list-style: none;
+}
