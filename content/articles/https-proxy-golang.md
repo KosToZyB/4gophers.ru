@@ -1,7 +1,7 @@
 +++
 date = "2017-11-15T17:00:01+03:00"
 draft = false
-title = "HTTP(S) на Go в 100 строчек кода"
+title = "HTTP(S) прокси на Go в 100 строчек кода"
 tags = ["golang", "net", "proxy", "http", "https"]
 
 +++
