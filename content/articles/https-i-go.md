@@ -2,6 +2,7 @@
 date = "2015-04-06T02:08:02+03:00"
 draft = false
 title = "HTTPS и Go"
+tags = ["http", "https"]
 
 +++
 

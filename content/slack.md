@@ -10,4 +10,4 @@ type = "page"
 
 Для получения инвайта отправьте, пожалуйста, письмо с именем и фамилией на <a href="mailto:invites@golang-ru.com">invites@golang-ru.com</a>
 
-Если у вас остались вопросы, пишите <a href="mailto:artem@4gophers.ru">artem@4gophers.ru</a>.
+Если у вас остались вопросы, пишите <a href="mailto:artem.kovardin@gmail.com">artem.kovardin@gmail.com</a>.
