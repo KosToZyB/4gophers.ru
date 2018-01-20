@@ -65,3 +65,11 @@ div.tags {
 div.tags ul li{
 	list-style: none;
 }
+
+h4, h3 {
+	margin-top: 2rem;
+}
+
+div.data {
+	margin-top: 3rem;
+}

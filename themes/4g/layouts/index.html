@@ -13,8 +13,9 @@
 		<div class="item">
 			<a href="/articles">Все статьи</a>
 		</div>
-
+		
 		<div class="item">
+			<p>Теги:</p>
 			{{ range $name, $taxonomy := .Site.Taxonomies.tags }}
 				<span><a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a></span>
 			{{ end }}

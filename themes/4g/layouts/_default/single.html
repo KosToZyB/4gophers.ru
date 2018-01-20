@@ -6,9 +6,14 @@
         <div class="row">
         	<div class="large-10 columns article">
         		<h2 class="title">{{ .Title }}</h2>
-        		{{ .Content }}
-        		
-        		<div class="data">{{ .Date.Format "Jan 2, 2006" }}</div>
+        		    {{ .Content }}
+        		<div class="data">
+                    <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">
+                        {{ .Date.Day }} {{ index $.Site.Data.ru (printf "%d" .Date.Month) }} {{ .Date.Year }}
+                    </time>
+                </div>
+
+                {{ partial "ad/single.html" }}
         	</div>
 
             <div class="large-2 columns">
@@ -40,8 +45,6 @@
             </div>
             <div class="large-7 columns">&nbsp;</div>
         </div> 
-
-        {{ partial "ad/single.html" }}
 
         <div class="row">
          	<div class="large-12 columns">
